@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Product>
+@{  
+    ViewBag.Title = "Product Name";
+}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@($"{product.Price:C2}")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@*<div data-productid="@Model.ProductID" data-stocklevel="@ViewBag.StockLevel">
+    <p>Product Name: @Model.Name</p>
+    <p>Product Price: @($"{Model.Price:C2}")</p>
+    <p>Stock Level: 
+        @if (ViewBag.StockLevel == 0)
+        {
+            @: Out of stock
+        }
+        else if (ViewBag.StockLevel > 0 && ViewBag.StockLevel <= 3)
+        {
+            @: Low stock, only @ViewBag.StockLevel unit(s) are available
+        }
+        else
+        {
+            @: @ViewBag.StockLevel in stock
+        }*@
+        @*@switch ((int)ViewBag.StockLevel)
+        {
+            case 0:
+                @: Out of stock
+                break;
+            case 1:
+            case 2:
+            case 3:
+                @: Low stock, only @ViewBag.StockLevel unit(s) are available
+                break;
+            default:
+                @: @ViewBag.StockLevel in stock
+                break;
+        }*@
+    @*</p>
+</div>*@
