@@ -2,20 +2,26 @@
 @{ ViewBag.Title = "Working with Visual Studio"; }
 
 <h3 class="text-center">Products</h3>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr><td>Name</td><td>Price</td></tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
-            <tr>
-                <td>@p.Name</td>
-                <td>@($"{p.Price:C2}")</td>
-            </tr>
-        }
-    </tbody>
-</table>
-<div class="text-center">
-    <a class="btn btn-primary" asp-action="AddProduct">Add New Product</a>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr><td class="col-md-8">Name</td><td class="col-md-4">Price</td></tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Name</td>
+                        <td>@($"{p.Price:C2}")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a class="btn btn-primary" asp-action="AddProduct">Add New Product</a>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
 </div>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WorkingWithVisualStudio.Models
 {
-    public class SimpleRepository
+    public class SimpleRepository : IRepository
     {
         private static SimpleRepository sharedRepository = new SimpleRepository();
         private Dictionary<string, Product> products = new Dictionary<string, Product>();
@@ -29,6 +29,7 @@ namespace WorkingWithVisualStudio.Models
 
             this.products.Add("Error", null);
         }
+
 
         public IEnumerable<Product> Products => this.products.Values;
         public void AddProduct(Product p) => this.products.Add(p.Name, p);

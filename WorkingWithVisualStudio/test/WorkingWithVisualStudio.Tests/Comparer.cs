@@ -14,7 +14,7 @@ namespace WorkingWithVisualStudio.Tests
     public class Comparer<T> : Comparer, IEqualityComparer<T>
     {
         private Func<T, T, bool> comparissonFunction;
-
+        
         public Comparer(Func<T, T, bool> func)
         {
             this.comparissonFunction = func;
