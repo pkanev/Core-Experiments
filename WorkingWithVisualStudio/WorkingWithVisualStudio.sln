@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WorkingWithVisualStudio", "src\WorkingWithVisualStudio\WorkingWithVisualStudio.xproj", "{213C60FF-9B48-4555-B4D9-4F78B17D6439}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B51265DC-9FC7-4362-8968-1B0CE66020C3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WorkingWithVisualStudio.Tests", "test\WorkingWithVisualStudio.Tests\WorkingWithVisualStudio.Tests.xproj", "{D6AFA91B-C0D2-46D3-B755-C92FE324BAA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +26,16 @@ Global
 		{213C60FF-9B48-4555-B4D9-4F78B17D6439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{213C60FF-9B48-4555-B4D9-4F78B17D6439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{213C60FF-9B48-4555-B4D9-4F78B17D6439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6AFA91B-C0D2-46D3-B755-C92FE324BAA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6AFA91B-C0D2-46D3-B755-C92FE324BAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6AFA91B-C0D2-46D3-B755-C92FE324BAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6AFA91B-C0D2-46D3-B755-C92FE324BAA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{213C60FF-9B48-4555-B4D9-4F78B17D6439} = {00E2CB5C-C628-4B84-B451-039545EFDAEB}
+		{D6AFA91B-C0D2-46D3-B755-C92FE324BAA1} = {B51265DC-9FC7-4362-8968-1B0CE66020C3}
 	EndGlobalSection
 EndGlobal
