@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using WorkingWithVisualStudio.Models;
 
@@ -10,6 +9,7 @@ namespace WorkingWithVisualStudio.Tests
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[] { GetPricesUnder50() };
+            yield return new object[] { GetPricesOver50 };
         }
 
         IEnumerator IEnumerable.GetEnumerator()

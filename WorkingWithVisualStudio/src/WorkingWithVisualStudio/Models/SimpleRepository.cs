@@ -26,8 +26,6 @@ namespace WorkingWithVisualStudio.Models
             {
                 this.AddProduct(p);
             }
-
-            this.products.Add("Error", null);
         }
 
 

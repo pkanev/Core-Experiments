@@ -13,8 +13,8 @@
                 @foreach (var p in Model)
                 {
                     <tr>
-                        <td>@p.Name</td>
-                        <td>@($"{p.Price:C2}")</td>
+                        <td>@p?.Name</td>
+                        <td>@($"{p?.Price:C2}")</td>
                     </tr>
                 }
             </tbody>
