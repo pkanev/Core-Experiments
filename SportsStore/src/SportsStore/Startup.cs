@@ -7,22 +7,44 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
 
 namespace SportsStore
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+        IConfigurationRoot Configuration;
+
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(env.ContentRootPath)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            if(env.IsDevelopment())
+            {
+                builder.AddUserSecrets();
+            }
+            
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IProductRepository, FakeProductRepository>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration["Data:SportStoreProducts:ConnectionString"]));
+            services.AddTransient<IProductRepository, EFProductRepository>();
+
+            //services.Configure<SportStoreProductsConfig>(Configuration.GetSection("Data:SportStoreProducts"));
+            //services.Configure<AppKeyConfig>(Configuration.GetSection("AppKeys"));
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
@@ -35,10 +57,18 @@ namespace SportsStore
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "pagination",
+                    template: "Products/Page{page}",
+                    defaults: new { Controller = "Product", action = "List" }
+                );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Product}/{action=List}/{id?}"
                 );
             });
+
+            SeedData.EnsurePopulated(app);
         }
     }
 }
