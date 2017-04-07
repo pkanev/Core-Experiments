@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
@@ -37,11 +32,10 @@ namespace SportsStore
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration["Data:SportStoreProducts:ConnectionString"]));
+                    Configuration["ConnectionString"]
+                    ));
             services.AddTransient<IProductRepository, EFProductRepository>();
-
-            //services.Configure<SportStoreProductsConfig>(Configuration.GetSection("Data:SportStoreProducts"));
-            //services.Configure<AppKeyConfig>(Configuration.GetSection("AppKeys"));
+            
             services.AddMvc();
         }
 
