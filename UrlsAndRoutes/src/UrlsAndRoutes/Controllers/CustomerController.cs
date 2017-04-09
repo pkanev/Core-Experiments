@@ -6,6 +6,7 @@ namespace UrlsAndRoutes.Controllers
 {
     public class CustomerController : Controller
     {
+        [Route("app/[controller]/actions/[action]/{id:weekday?}")]
         public ViewResult Index() => View("Result",
             new Result
             {
@@ -13,11 +14,18 @@ namespace UrlsAndRoutes.Controllers
                 Action = nameof(Index)
             });
 
-        public ViewResult List() => View("Result",
-            new Result
+        public ViewResult List(string id)
+        {
+            Result r = new Result
             {
                 Controller = nameof(CustomerController),
                 Action = nameof(List)
-            });
+            };
+
+            r.Data["id"] = id ?? "<no value>";
+            r.Data["catchall"] = RouteData.Values["catchall"];
+
+            return View("Result", r);
+        }
     }
 }
