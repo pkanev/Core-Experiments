@@ -22,6 +22,7 @@ namespace UrlsAndRoutes.Controllers
 
             //r.Data["id"] = RouteData.Values["id"];
             r.Data["id"] = id ?? "<no value>";
+            r.Data["url"] = Url.Action("CustomerVariable", "Home", new { id = 100 });
             return View("Result", r);
         }
     }
