@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text;
+using ControllersAndActions.Infrastructure;
 
 namespace ControllersAndActions.Controllers
 {
@@ -6,7 +8,7 @@ namespace ControllersAndActions.Controllers
     {
         public ViewResult Index() => View("SimpleForm");
 
-        public ViewResult ReceiveForm(string name, string city) 
+        public ViewResult ReceiveForm(string name, string city)
             => View("Result", $"{name} lives in {city}");
     }
 }
