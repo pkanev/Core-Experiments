@@ -6,18 +6,18 @@ namespace ControllersAndActions.Tests
 {
     public class ActionTests
     {
-        [Fact]
-        public void ViewSelected()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
+        //[Fact]
+        //public void ViewSelected()
+        //{
+        //    Arrange
+        //   HomeController controller = new HomeController();
 
-            // Act
-            ViewResult result = controller.ReceiveForm("Adam", "London");
+        //    Act
+        //   ViewResult result = controller.ReceiveForm("Adam", "London");
 
-            // Assert
-            Assert.Equal("Result", result.ViewName);
-        }
+        //    Assert
+        //    Assert.Equal("Result", result.ViewName);
+        //}
 
         [Fact]
         public void ModelObjectType()
@@ -45,6 +45,28 @@ namespace ControllersAndActions.Tests
             Assert.False(result.Permanent);
             Assert.Equal("Index", result.ActionName);
             Assert.Equal("Home", result.ControllerName);
+        }
+
+        [Fact]
+        public void JsonActionMethod()
+        {
+            // Arrange
+            ExampleController controller = new ExampleController();
+            // Act
+            JsonResult result = controller.GetJson();
+            // Assert
+            Assert.Equal(new[] { "Alice", "Bob", "Joe" }, result.Value);
+        }
+
+        [Fact]
+        public void NotFoundActionMethod()
+        {
+            // Arrange
+            ExampleController controller = new ExampleController();
+            // Act
+            StatusCodeResult result = controller.RaiseAnotherNotFound();
+            // Assert
+            Assert.Equal(404, result.StatusCode);
         }
     }
 }
